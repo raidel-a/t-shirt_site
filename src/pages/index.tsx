@@ -19,7 +19,7 @@ import sleevelessWhite from "/public/assets/sleeveless-white.png";
 const font = Figtree({ subsets: ["latin"] });
 
 export default function Home() {
-  const [show, setShow] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const handleAccept = () => {
     setShowAlert(false);
   };
@@ -234,32 +234,29 @@ export default function Home() {
               <p className="text-sm">$10 x numOfShirts</p>
               <p className="text-lg">$ orderTotal</p>
             </div>
-            <div>
-              <div className="border-b border-gray-200 py-4">
+
+            <div className="border-b border-gray-200 py-4">
+              <div>
                 <div
-                  onClick={() => setShow(!show)}
                   className="flex cursor-pointer items-center justify-between"
+                  onClick={() => setIsHidden(!isHidden)}
                 >
                   <p className="text-base font-bold leading-4 text-gray-300">
                     Shipping Information
                   </p>
                   <button
                     className="
-									cursor-pointer
-									rounded focus:outline-none focus:ring-2 focus:ring-gray-400
-									focus:ring-offset-2
-								"
+          cursor-pointer
+          rounded focus:outline-none focus:ring-2 focus:ring-gray-400
+          focus:ring-offset-2
+        "
                     aria-label="show or hide"
                   >
                     <Chev size={25} color="neutral-400" />
                   </button>
                 </div>
                 <div
-                  className={
-                    "mt-4 pt-3 text-base leading-normal text-gray-500" +
-                    (show ? "block" : "hidden")
-                  }
-                  id="sect"
+                  className={`pt-3 text-base leading-normal text-gray-500 ${isHidden ? "hidden" : ""}`}
                 >
                   <div className="flex-wrap  p-1">
                     <label className="input input-bordered flex items-center">
@@ -324,7 +321,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <button className="btn mt-7 text-xl w-full bg-amber-500 hover:bg-amber-600 font-extrabold text-blue-900">
+            <button className="btn mt-7 w-full bg-amber-500 text-xl font-extrabold text-blue-900 hover:bg-amber-600">
               Order Shirts
             </button>
           </div>
