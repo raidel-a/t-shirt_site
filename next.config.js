@@ -5,10 +5,14 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {
-  
+module.exports = {
+  experimental: {
+    images: {
+      unoptimized: true, // Enable image optimization
+    },
+  },
+  basePath: "/t-shirt_site",
   reactStrictMode: true,
-
   /**
    * If you are using `appDir` then you must comment the below `i18n` config out.
    *
@@ -20,4 +24,3 @@ const config = {
   // },
 };
 
-export default config;
