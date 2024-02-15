@@ -27,6 +27,9 @@ export default function Home() {
   const [shipHidden, setshipIsHidden] = useState(false);
   const [payHidden, setpayIsHidden] = useState(false);
 
+  const [deliveryMethod, setDeliveryMethod] = useState("");
+  const [expressShipping, setExpressShipping] = useState(false);
+
   const [paymentMethod, setPaymentMethod] = useState("");
 
   const [showAlert, setShowAlert] = useState(true);
@@ -38,7 +41,6 @@ export default function Home() {
   const [medium, setMedium] = useState(0);
   const [large, setLarge] = useState(0);
   const [xLarge, setXLarge] = useState(0);
-  const [expressShipping, setExpressShipping] = useState(false);
 
   const numOfShirts = small + medium + large + xLarge;
   const orderTotal = numOfShirts * 10 + (expressShipping ? 10 : 0);
@@ -78,7 +80,7 @@ export default function Home() {
         <div className="navbar bg-base-300 top-2 rounded-b-3xl ">
           <div className=" flex-1 lg:flex-none">
             <a className="ps-2 text-lg font-bold">
-              Easter Egg Hunt Team Shirts
+              FIU Scavanger Hunt Shirt Store
             </a>
           </div>
           <div className="flex flex-1 justify-end px-2">
@@ -349,19 +351,6 @@ export default function Home() {
                       </label>
                     </span>
                   </div>{" "}
-                  <div className="form-control items-stretch justify-center ">
-                    <label className="label cursor-pointer">
-                      <span className="label-text">Express Shipping</span>
-                      <span className="flex">
-                        +$10
-                        <input
-                          type="checkbox"
-                          className="checkbox checkbox-warning ml-2"
-                          onChange={(e) => setExpressShipping(e.target.checked)}
-                        />
-                      </span>
-                    </label>
-                  </div>
                 </div>
               </div>
             </div>{" "}
@@ -374,6 +363,7 @@ export default function Home() {
                   <p className="text-base font-bold leading-4 text-gray-300">
                     Payment & Delivery
                   </p>
+
                   <button
                     className="cursor-pointer rounded focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
                     aria-label="show or hide"
@@ -385,6 +375,27 @@ export default function Home() {
                   className={`pt-3 text-base leading-normal text-gray-500 ${payHidden ? "hidden" : ""}`}
                 >
                   <div className="flex-wrap  p-1">
+                    <div className="form-control items-stretch justify-center ">
+                      <label className="label cursor-pointer">
+                        <span className="label-text">Express Shipping</span>
+                        <span className="flex">
+                          +$10
+                          <input
+                            type="checkbox"
+                            className="checkbox checkbox-warning ml-2"
+                            checked={
+                              expressShipping && deliveryMethod !== "Pick-Up"
+                            }
+                            onChange={(e) => {
+                              setExpressShipping(e.target.checked);
+                              if (e.target.checked) {
+                                setDeliveryMethod("Delivery");
+                              }
+                            }}
+                          />
+                        </span>
+                      </label>
+                    </div>
                     <div className="form-control">
                       <label className="label cursor-pointer">
                         <span className="label-text">Pick-Up</span>
@@ -392,7 +403,13 @@ export default function Home() {
                           type="radio"
                           name="radio-2"
                           id="Pick-Up"
-                          className="radio checked:bg-white-500"
+                          checked={deliveryMethod === "Pick-Up"}
+                          onChange={(e) => {
+                            setDeliveryMethod(e.target.id);
+                            if (e.target.id === "Pick-Up") {
+                              setExpressShipping(false);
+                            }
+                          }}
                         />
                       </label>
                     </div>
@@ -403,14 +420,20 @@ export default function Home() {
                           type="radio"
                           name="radio-2"
                           id="Delivery"
-                          className="radio checked:bg-white-500"
+                          checked={deliveryMethod === "Delivery"}
+                          onChange={(e) => {
+                            setDeliveryMethod(e.target.id);
+                            if (e.target.id === "Pick-Up") {
+                              setExpressShipping(false);
+                            }
+                          }}
                         />
                       </label>
                     </div>
                   </div>
 
                   <div className="divider" />
-                  <div className=" -mx-2 mb-3 flex justify-end">
+                  <div className=" -mx-2 mb-3 flex justify-evenly">
                     <div className="form control px-2 ">
                       <label className="label cursor-pointer gap-2">
                         <input
@@ -551,11 +574,16 @@ export default function Home() {
             </div>
           )}
         </div>
-        <div className="flex h-20 w-full items-center justify-center bg-gradient-to-t from-black via-65% via-transparent ">
-          <p className="text-center text-lg text-neutral-400/70 font-sans font-semibold">
+        <div className="flex h-20 w-full items-center justify-center bg-gradient-to-t from-black via-transparent via-65% ">
+          <p className="text-center font-sans text-lg font-semibold text-neutral-400/70">
             Made with TypeScript, Tailwind, and React
             <br />
-            <a className="underline decoration-wavy decoration-teal-600" href="raidel.dev">raidel.dev</a>
+            <a
+              className="underline decoration-teal-600 decoration-wavy"
+              href="raidel.dev"
+            >
+              raidel.dev
+            </a>
           </p>
         </div>
       </main>
