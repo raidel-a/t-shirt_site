@@ -6,21 +6,18 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
+  images: {
+    unoptimized: true,
+    // domains: ["daisyui.com", "leadershipmemphis.org", "www.sketchappsources.com"],
+  },
+  experimental: {},
+  basePath: "/t-shirt_site",
   output: "export", // This is required for static site generation
   reactStrictMode: true,
 
-  /**
-   * If you are using `appDir` then you must comment the below `i18n` config out.
-   *
-   * @see https://github.com/vercel/next.js/issues/41980
-   */
   // i18n: {
   //   locales: ["en"],
   //   defaultLocale: "en",
-  // },
-
-  // images: {
-  //   domains: ["daisyui.com", "leadershipmemphis.org", "www.sketchappsources.com"],
   // },
 };
 
