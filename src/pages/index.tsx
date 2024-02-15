@@ -530,7 +530,7 @@ export default function Home() {
               </p>
               <p className="text-lg">$ {orderTotal}</p>
             </div>
-            <button className="btn mt-7 w-full bg-yellow-600 text-2xl font-black shadow-[0_10px_0_0_rgba(40,40,40)] text-slate-300 hover:bg-yellow-700 active:scale-95 active:text-black">
+            <button className="btn mt-7 w-full bg-yellow-600 text-2xl font-black text-slate-300 hover:bg-yellow-700 active:scale-95 active:text-black">
               Order Shirts
             </button>
           </div>
