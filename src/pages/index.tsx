@@ -24,8 +24,8 @@ import sleevelessWhite from "/public/assets/sleeveless-white.png";
 const font = Figtree({ subsets: ["latin"] });
 
 export default function Home() {
-  const [shipHidden, setshipIsHidden] = useState(false);
-  const [payHidden, setpayIsHidden] = useState(false);
+  const [shipHidden, setshipIsHidden] = useState(true);
+  const [payHidden, setpayIsHidden] = useState(true);
 
   const [deliveryMethod, setDeliveryMethod] = useState("");
   const [expressShipping, setExpressShipping] = useState(false);
