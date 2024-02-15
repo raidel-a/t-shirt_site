@@ -20,6 +20,7 @@ import { LuMail } from "react-icons/lu";
 import longSleeveWhite from "/public/assets/longSleeve-white.png";
 import shortSleeveWhite from "/public/assets/shirt-white.png";
 import sleevelessWhite from "/public/assets/sleeveless-white.png";
+import Logo from "/public/assets/Panther Logo.png";
 
 const font = Figtree({ subsets: ["latin"] });
 
@@ -77,11 +78,13 @@ export default function Home() {
       <main
         className={`${font.className} to-slate-[] flex min-h-screen flex-col items-center justify-center bg-gradient-to-t from-slate-900/80`}
       >
-        <div className="navbar bg-base-300 top-2 rounded-b-3xl ">
+        <div className="navbar bg-base-300 top-2 rounded-b-3xl">
           <div className=" flex-1 lg:flex-none">
-            <a className="ps-2 text-lg font-bold">
-              FIU Scavanger Hunt Shirt Store
-            </a>
+            <div className="flex items-center flex-wrap  justify-between">
+            <Image width={115} alt="FIU Panther LOGO"  src={Logo} />
+            <a className="relative text-3xl  font-mono font-semibold relativejustify-end pl-5 top-[14px] text-yellow-600 ">
+              Scavanger Hunt Jersey Store
+            </a></div>
           </div>
           <div className="flex flex-1 justify-end px-2">
             <div className="flex items-stretch">
@@ -278,7 +281,7 @@ export default function Home() {
                   className="flex cursor-pointer items-center justify-between"
                   onClick={() => setshipIsHidden(!shipHidden)}
                 >
-                  <p className="text-base font-bold leading-4 text-gray-300">
+                  <p className="font-sans text-2xl font-bold leading-4 text-gray-300">
                     Customer Information
                   </p>
                   <button
@@ -360,7 +363,7 @@ export default function Home() {
                   className="flex cursor-pointer items-center justify-between"
                   onClick={() => setpayIsHidden(!payHidden)}
                 >
-                  <p className="text-base font-bold leading-4 text-gray-300">
+                  <p className="font-sans text-2xl font-bold leading-4 text-gray-300">
                     Payment & Delivery
                   </p>
 
@@ -545,12 +548,11 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center justify-between border-b border-gray-400 py-4 ">
+              <p className="row-span-2">{expressShipping && "+ $10"}</p>
               <p className="text-base font-semibold leading-3 text-gray-300 ">
                 Order Total
               </p>
-              <p className="text-sm">
-                $10 x {numOfShirts} {expressShipping && "+ $10"}
-              </p>
+              <p className="text-sm">$10 x {numOfShirts}</p>
               <p className="text-lg">$ {orderTotal}</p>
             </div>
             <button className="btn mt-7 w-full bg-yellow-600 text-2xl font-black text-slate-300 hover:bg-yellow-700 active:scale-95 active:text-black">
@@ -574,7 +576,7 @@ export default function Home() {
             </div>
           )}
         </div>
-        <div className="flex h-20 w-full items-center justify-center bg-gradient-to-t from-black via-transparent via-65% ">
+        <div className=" h-20 bottom-0 w-full items-center justify-center bg-gradient-to-t from-black via-transparent via-65% ">
           <p className="text-center font-sans text-lg font-semibold text-neutral-400/70">
             Made with TypeScript, Tailwind, and React
             <br />
