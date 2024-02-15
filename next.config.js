@@ -19,7 +19,7 @@ const config = {
   },
 
   images: {
-    domains: ["daisyui.com"],
+    domains: ["daisyui.com", "leadershipmemphis.org", "www.sketchappsources.com"],
   },
 };
 
