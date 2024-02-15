@@ -6,6 +6,7 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
+  output: "export", // This is required for static site generation
   reactStrictMode: true,
 
   /**
@@ -13,14 +14,14 @@ const config = {
    *
    * @see https://github.com/vercel/next.js/issues/41980
    */
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
+  // i18n: {
+  //   locales: ["en"],
+  //   defaultLocale: "en",
+  // },
 
-  images: {
-    domains: ["daisyui.com", "leadershipmemphis.org", "www.sketchappsources.com"],
-  },
+  // images: {
+  //   domains: ["daisyui.com", "leadershipmemphis.org", "www.sketchappsources.com"],
+  // },
 };
 
 export default config;
